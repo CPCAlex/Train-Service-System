@@ -21,6 +21,7 @@ db = SQLAlchemy(app)
 
 class Train_data(db.Model):
     _train_id = db.Column("train_id", db.Integer, primary_key=True) # ________, we design that train id has totally 8 digits, the first 3 numbers represent train's line, and the last 5 numbers represent train's id in that line.
+    line = db.Column("line", db.String(100)) # Line of this train (e.g. Route A, Route B ...)
     train_type = db.Column("train_type", db.String(100)) # Local, Rapid, Special Rapid
     #direction = db.Column("direction", db.Boolean) # 0 means from the first station (0km) to final destination(xxkm), 1 means from final destination (xxkm) to the first station (0km)
     station = db.Column("station", db.String(100)) # station name that certain train stops by.
@@ -32,7 +33,7 @@ class Train_data(db.Model):
     final_destination = db.Column("final_distination", db.String(100)) # train's final destination.
     transfer_station = db.Column("transfer_station", db.Boolean) # 1 menas this station can transfer to other line, 0 otherwise.
 
-    # def __init__(self, ):
+    # def __init__(self, train_type, station, arrival_time, departure_time, dwell_time, distance, final_destination, transfer_station):
     #     self.name = name
     #     self.email = email
 
