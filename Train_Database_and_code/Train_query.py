@@ -448,6 +448,8 @@ def Less_travel_time_algorithm(start_pos, destination, departure_time):
             time_difference = start_time - end_time
             hours, remainder = divmod(time_difference.seconds, 3600)
             minutes = remainder // 60
+            hours = 23 - hours
+            minutes = 60 - minutes
             solution_data[8] = f"{hours}h{minutes}min"
             solution_data[5] = str(solution_data[5])
             solution_data[4] = solution_data[4].strftime("%H:%M")
@@ -674,6 +676,8 @@ def Less_money_algorithm(start_pos, destination, departure_time):
             time_difference = start_time - end_time
             hours, remainder = divmod(time_difference.seconds, 3600)
             minutes = remainder // 60
+            hours = 23 - hours
+            minutes = 60 - minutes
             solution_data[8] = f"{hours}h{minutes}min"
             solution_data[5] = str(solution_data[5])
             solution_data[4] = solution_data[4].strftime("%H:%M")
@@ -920,6 +924,8 @@ def Less_transfer_time_algorithm(start_pos, destination, departure_time):
             time_difference = start_time - end_time
             hours, remainder = divmod(time_difference.seconds, 3600)
             minutes = remainder // 60
+            hours = 23 - hours
+            minutes = 60 - minutes
             solution_data[8] = f"{hours}h{minutes}min"
             solution_data[5] = str(solution_data[5])
             solution_data[4] = solution_data[4].strftime("%H:%M")
