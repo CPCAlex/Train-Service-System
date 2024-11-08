@@ -980,7 +980,12 @@ def main():
                     print("Cost in this step: " + solution[i][7] + "; Travel time in this train: " + solution[i][8])
                     print("To: " + solution[i][2] + "; Arrival time: " + solution[i][4])
                 print("")
-
+        print("")
+        print("Total step(s):" + str(total_step))
+        print("Total transfer time(s):" + str(total_transfer_time))
+        print("Total Money Spent:" + str(total_money_spent))
+        print("Initial departure time:" + str(initial_departure_time))
+        print("Final arrival time:" + str(final_arrival_time))
         # if int(criteria) == 1:
         #     station_info = Less_travel_time_algorithm(start_pos, destination, departure_time)
         #     current_station = destination
