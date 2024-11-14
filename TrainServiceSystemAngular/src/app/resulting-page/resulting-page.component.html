@@ -1,0 +1,75 @@
+<div class="resulting-page">
+  <h2>Train Route Details</h2>
+
+  <div class="train-map">
+    <img src = "../../assets/Designed_train_map.jpg" alt="Train Map" />
+  </div>
+
+  <div class="map-container" #mapContainer></div>
+
+  <div class="summary-box">
+
+  <div class="input-box">
+    <p><strong>From:</strong> {{ from }}</p>
+  </div>
+
+  <div class="input-box">
+    <p><strong>To:</strong> {{ to }}</p>
+  </div>
+
+  <div class="input-box">
+    <p><strong>Criteria:</strong> {{ criteria }}</p>
+  </div>
+
+  <div class="input-box">
+    <p><strong>Departure Time:</strong> {{ departureTime }}</p>
+  </div>
+
+  </div>
+
+  <div *ngIf="result.destination_reachable" class="summary-box">
+    <h3>Travel Details:</h3>
+    <table class="solution-table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Train ID</th>
+          <th>Train Type</th>
+          <th>Price</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let step of result.solution; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ step[1] }}</td>
+          <td>{{ step[2] }}</td>
+          <td>{{ step[3] }}</td>
+          <td>{{ step[4] }}</td>
+          <td>{{ step[5] }}</td>
+          <td>{{ step[6] }}</td>
+          <td>{{ step[7] | currency: 'USD':'symbol':'1.2-2' }}</td>
+          <td>{{ step[8] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-box">
+    <h4>Summary:</h4>
+    <br>
+    <p><strong>Total Steps:</strong> {{ result.total_step }}</p>
+    <p><strong>Total Transfer Time:</strong> {{ result.total_transfer_time }}</p>
+    <p><strong>Total Money Spent:</strong> {{ result.total_money_spent | currency: 'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Initial Departure Time:</strong> {{ result.initial_departure_time }}</p>
+    <p><strong>Final Arrival Time:</strong> {{ result.final_arrival_time }}</p>
+  </div>
+
+  <div *ngIf="!result.destination_reachable" class="summary-box">
+    <p>Destination is not reachable with the given criteria.</p>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+  <main>
+    <section class="search-form">
+      <h2>Find Your Train</h2>
+      
+      <div class="train-map">
+        <img src = "../../assets/Designed_train_map.jpg" alt="Train Map" />
+      </div>
+
+      <br>
+
+      <form [formGroup] = "searchForm">
+        <label for="from">From</label>
+        <input type="text" id="from" formControlName="from" placeholder="Enter departure station" required />
+  
+        <label for="to">To</label>
+        <input type="text" id="to" formControlName="to" placeholder="Enter destination station" required />
+  
+        <label for="criteria">Criteria</label>
+        <select id="criteria" formControlName="criteria" required>
+          <option value="">Select an option</option>
+          <option value="Quickest Route">Quickest Route</option>
+          <option value="Cheapest Route">Cheapest Route</option>
+          <option value="Fewest Stops">Fewest Stops</option>
+        </select>
+  
+  <label for="departure_time">Departure Time</label>
+  <input type="text" id="departure_time" formControlName="departureTime" placeholder="Enter departure time in 24 format (XX:XX)" required/>
+  
+      <button type="button" (click)="goToRoute()">Search Routes</button>
+      </form>
+    </section>
+  </main>
