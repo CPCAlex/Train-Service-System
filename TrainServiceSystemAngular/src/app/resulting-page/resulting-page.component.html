@@ -64,7 +64,7 @@
     <br>
     <p><strong>Total Steps:</strong> {{ result.total_step }}</p>
     <p><strong>Total Transfer Time:</strong> {{ result.total_transfer_time }}</p>
-    <p><strong>Total Money Spent:</strong> {{ result.total_money_spent }}</p>
+    <p><strong>Total Money Spent:</strong> {{ result.total_money_spent | currency: 'USD':'symbol':'1.2-2' }}</p>
     <p><strong>Initial Departure Time:</strong> {{ result.initial_departure_time }}</p>
     <p><strong>Final Arrival Time:</strong> {{ result.final_arrival_time }}</p>
   </div>
