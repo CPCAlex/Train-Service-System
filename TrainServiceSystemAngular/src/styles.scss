@@ -1,1 +1,115 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-dark: #2b2b2b;
+    --secondary-gray: #3f3f3f;
+    --light-gray: #e6e6e6;
+    --white: #ffffff;
+    --accent-gray: #7a7a7a;
+    --accent-light: #d4d4d4;
+
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--light-gray);
+    color: var(--primary-dark);
+    margin: 0;
+  }
+
+  header {
+    background-color: var(--primary-dark);
+    padding: 2rem;
+    text-align: center;
+    color: var(--white);
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  nav {
+    margin-top: 1rem;
+  }
+
+  nav a {
+    color: var(--accent-light);
+    margin: 0 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+  }
+
+  nav a:hover {
+    color: var(--white);
+  }
+
+  main {
+    padding: 3rem;
+    background-color: var(--light-gray);
+    min-height: 25vh;
+  }
+
+  .features {
+    margin-top: 0rem;
+    text-align: center;
+  }
+  
+  .features h2 {
+    margin-bottom: 2rem;
+    color: var(--secondary-gray);
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  
+  .feature-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feature-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  
+  .feature-card p {
+    color: var(--accent-gray);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  footer {
+    background-color: var(--primary-dark);
+    color: var(--accent-light);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
