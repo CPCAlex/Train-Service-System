@@ -227,6 +227,7 @@ line_outbound_data_mapping = {
 }
 
 def Less_travel_time_algorithm(start_pos, destination, departure_time):
+    departure_time = Departure_time_input_text(departure_time)
     destination_line = destination[0]
     destination_line_number = {'R': 0, 'G': 1, 'O': 2, 'B': 3}.get(destination[0], -1)
     destination_number = int(destination[1:]) - 1
@@ -468,6 +469,7 @@ def Less_travel_time_algorithm(start_pos, destination, departure_time):
         # if station_line == "R":
 
 def Less_money_algorithm(start_pos, destination, departure_time):
+    departure_time = Departure_time_input_text(departure_time)
     destination_line = destination[0]
     destination_line_number = {'R': 0, 'G': 1, 'O': 2, 'B': 3}.get(destination[0], -1)
     destination_number = int(destination[1:]) - 1
@@ -672,7 +674,8 @@ def Less_money_algorithm(start_pos, destination, departure_time):
                 solution_data[3] = line_inbound_data_mapping[current_station_line].query.filter_by(
                     station=temp_station, train_id=solution_data[5]).first().departure_time
             start_time = datetime.combine(datetime.min, solution_data[3])
-            end_time = datetime.combine(datetime.min, solution_data[4])
+            end_time_str = solution_data[4]
+            end_time = datetime.combine(datetime.min, datetime.strptime(end_time_str, "%H:%M").time())
             time_difference = start_time - end_time
             hours, remainder = divmod(time_difference.seconds, 3600)
             minutes = remainder // 60
@@ -680,7 +683,7 @@ def Less_money_algorithm(start_pos, destination, departure_time):
             minutes = 60 - minutes
             solution_data[8] = f"{hours}h{minutes}min"
             solution_data[5] = str(solution_data[5])
-            solution_data[4] = solution_data[4].strftime("%H:%M")
+            #solution_data[4] = solution_data[4].strftime("%H:%M")
             solution_data[3] = solution_data[3].strftime("%H:%M")
             if solution_data[6] == 11:
                 solution_data[6] = "Rapid"
@@ -920,7 +923,8 @@ def Less_transfer_time_algorithm(start_pos, destination, departure_time):
                 solution_data[3] = line_inbound_data_mapping[current_station_line].query.filter_by(
                     station=temp_station, train_id=solution_data[5]).first().departure_time
             start_time = datetime.combine(datetime.min, solution_data[3])
-            end_time = datetime.combine(datetime.min, solution_data[4])
+            end_time_str = solution_data[4]
+            end_time = datetime.combine(datetime.min, datetime.strptime(end_time_str, "%H:%M").time())
             time_difference = start_time - end_time
             hours, remainder = divmod(time_difference.seconds, 3600)
             minutes = remainder // 60
@@ -928,7 +932,7 @@ def Less_transfer_time_algorithm(start_pos, destination, departure_time):
             minutes = 60 - minutes
             solution_data[8] = f"{hours}h{minutes}min"
             solution_data[5] = str(solution_data[5])
-            solution_data[4] = solution_data[4].strftime("%H:%M")
+            #solution_data[4] = solution_data[4].strftime("%H:%M")
             solution_data[3] = solution_data[3].strftime("%H:%M")
             if solution_data[6] == 11:
                 solution_data[6] = "Rapid"
@@ -941,7 +945,7 @@ def Less_transfer_time_algorithm(start_pos, destination, departure_time):
     solution = solution[::-1]
     return destination_reachable, total_step, solution, total_transfer_time, total_money_spent, initial_departure_time, final_arrival_time
 
-
+"""
 def main():
     with app.app_context():
         start_pos = input("Start position:")
@@ -1079,3 +1083,4 @@ def main():
                 # 输出cost的时候转换为字符串
 main()
 
+"""
