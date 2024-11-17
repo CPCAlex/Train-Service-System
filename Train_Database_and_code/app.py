@@ -16,7 +16,7 @@ from Flask_Database_Data_Input import db, Line_data, Red_Line_Outbound_data, Red
 
 app = Flask(__name__)
 
-CORS(app, origins="http://localhost:4200")
+CORS(app)
 
 app.secret_key = 'cpc'  
 

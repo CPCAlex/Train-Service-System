@@ -1,0 +1,66 @@
+<div class="timetable-container">
+  <div class="summary-box">
+    <h1>Train Timetable</h1>
+
+    <br>
+    
+    <div class="input-section">
+      <div class="input-box">
+        <label for="train-line">Select Train Line:</label>
+        <select id="train-line" [(ngModel)]="selectedTrainLine" (change)="loadTimeTables()">
+        <option value="" disabled selected>Choose a train line</option>
+        <option *ngFor="let line of trainLines" [value]="line">{{ line }}</option>
+      </select>
+    </div>
+    </div>
+
+    <br>
+
+    <div class="direction-buttons">
+      <button 
+        (click)="selectDirection('Inbound')" 
+        [class.selected]="selectedDirection === 'Inbound'">
+        Inbound
+      </button>
+      <button 
+        (click)="selectDirection('Outbound')" 
+        [class.selected]="selectedDirection === 'Outbound'">
+        Outbound
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="table-container" *ngIf="timeTable.length > 0">
+    <table class="solution-table">
+      <thead>
+        <tr>
+          <th>Train ID</th>
+          <th>Train Type</th>
+          <th>Station</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of timeTable">
+          <td>{{ entry['Train ID'] }}</td>
+          <td>{{ entry['Train Type'] }}</td>
+          <td>{{ entry['Station'] }}</td>
+          <td>{{ entry['Departure'] }}</td>
+          <td>{{ entry['Arrival'] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="summary-box" *ngIf="timeTable.length === 0">
+    <h4>No Data Available</h4>
+    <p>Please select a train line and direction to view the timetable.</p>
+  </div>
+
+  <div class="button-container">
+    <button class="home-button" routerLink="/home">Return to Home</button>
+  </div>
+</div>

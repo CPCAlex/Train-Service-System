@@ -1,0 +1,127 @@
+.timetable-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+  }
+
+  label {
+    font-size: 1.2rem;
+    color: var(--secondary-gray);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  .input-section {
+    display: flex;
+    flex-direction: column; 
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .input-box {
+    width: 100%;
+
+    label {
+      font-size: 1.2rem;
+      color: var(--secondary-gray);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .direction-buttons {
+    display: flex;
+    flex-direction: column; 
+    gap: 1rem;
+
+    button {
+      padding: 1rem;
+      background-color: white;
+      border: none;
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+      color: var(--primary-dark);
+      border: 3px solid var(--primary-dark);
+
+      &.selected, &:hover {
+        background-color: var(--primary-dark);
+        color: var(--white);
+        border: 3px solid var(--primary-dark);
+      }
+    }
+  }
+
+  button {
+    padding: 1rem;
+    flex: 1;
+    background-color: var(--secondary-gray);
+    border: none;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+
+    &.selected, &:hover {
+      background-color: var(--primary-dark);
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    tr {
+      &:nth-child(even) {
+        background-color: #f4f4f4;
+      }
+      
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  div:has(p) {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-gray);
+    font-size: 1.1rem;
+  }
+}
