@@ -59,11 +59,11 @@ def Criteration_input_test():
 def Departure_time_input_text(time_input):
 
     if re.fullmatch(r'([0-1]?\d|2[0-3]):[0-5]\d', time_input):
-        time_obj = datetime.strptime(time_input, "%H:%M").time()
-        return time_obj
+        #time_obj = datetime.strptime(time_input, "%H:%M").time()
+        return True
     else:
-        print("Invalid time format. Please enter time in HH:MM format (e.g., 11:22).")
-        return Departure_time_input_text()
+        #print("Invalid time format. Please enter time in HH:MM format (e.g., 11:22).")
+        return False
 
 #initial setup for every station
 def Initialize_station(wait_list, departure_time, start_pos):
@@ -227,7 +227,8 @@ line_outbound_data_mapping = {
 }
 
 def Less_travel_time_algorithm(start_pos, destination, departure_time):
-    departure_time = Departure_time_input_text(departure_time)
+    #departure_time = Departure_time_input_text(departure_time)
+    departure_time = datetime.strptime(departure_time, "%H:%M").time()
     destination_line = destination[0]
     destination_line_number = {'R': 0, 'G': 1, 'O': 2, 'B': 3}.get(destination[0], -1)
     destination_number = int(destination[1:]) - 1
@@ -469,7 +470,9 @@ def Less_travel_time_algorithm(start_pos, destination, departure_time):
         # if station_line == "R":
 
 def Less_money_algorithm(start_pos, destination, departure_time):
-    departure_time = Departure_time_input_text(departure_time)
+    #departure_time = Departure_time_input_text(departure_time)
+    departure_time = datetime.strptime(departure_time, "%H:%M").time()
+
     destination_line = destination[0]
     destination_line_number = {'R': 0, 'G': 1, 'O': 2, 'B': 3}.get(destination[0], -1)
     destination_number = int(destination[1:]) - 1
@@ -698,6 +701,7 @@ def Less_money_algorithm(start_pos, destination, departure_time):
 
 
 def Less_transfer_time_algorithm(start_pos, destination, departure_time):
+    departure_time = datetime.strptime(departure_time, "%H:%M").time()
     destination_line = destination[0]
     destination_line_number = {'R': 0, 'G': 1, 'O': 2, 'B': 3}.get(destination[0], -1)
     destination_number = int(destination[1:]) - 1
