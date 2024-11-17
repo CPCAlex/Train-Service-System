@@ -1,35 +1,46 @@
 <header>
-    <h1>Train Service System</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">View Route</a>
-      <a href="#">Profile</a>
-    </nav>
-  </header>
+  <table class="header-table">
+    <tr>
+      <td class="logo-cell">
+        <img src="assets/train_icon.png" alt="Train Logo" class="header-icon" />
+      </td>
+      <td class="content-cell">
+        <h1>Train Service System</h1>
+        <nav>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Route Search</a>
+          <a routerLink="/timetable" routerLinkActive="active">Timetable</a>
+          <a routerLink="/map" routerLinkActive="active">Train Map</a>
+        </nav>
+      </td>
+    </tr>
+  </table>
+</header>
 
-<router-outlet></router-outlet>
-
+<main>
+  <router-outlet></router-outlet>
+</main>
+<!-- 
 <section class="features">
-    <h2>More About the Creators</h2>
-    <div class="feature-cards">
-      <div class="feature-card">
-        <h3>Peicong Cheng</h3>
-        <p>Info about Pei</p>
-        <p>Email: pcgkg&#64;umsystem.edu</p>
-      </div>
-      <div class="feature-card">
-        <h3>Bryson Bourisaw</h3>
-        <p>Senior computer science student at Mizzou</p>
-        <p>Email: bdbhb6&#64;umsystem.edu</p>
-      </div>
-      <div class="feature-card">
-        <h3>Makara Pen</h3>
-        <p>Info about Max</p>
-        <p>Email: mpk6d&#64;umsystem.edu</p>
-      </div>
+  <h2>More About the Creators</h2>
+  <div class="feature-cards">
+    <div class="feature-card">
+      <h3>Peicong Cheng</h3>
+      <p>Info about Pei</p>
+      <p>Email: pcgkg&#64;umsystem.edu</p>
     </div>
-  </section>
-
+    <div class="feature-card">
+      <h3>Bryson Bourisaw</h3>
+      <p>Senior computer science student at Mizzou</p>
+      <p>Email: bdbhb6&#64;umsystem.edu</p>
+    </div>
+    <div class="feature-card">
+      <h3>Makara Pen</h3>
+      <p>Info about Max</p>
+      <p>Email: mpk6d&#64;umsystem.edu</p>
+    </div>
+  </div>
+</section>
+-->
 <footer>
   <p>Capstone II Project</p>
 </footer>

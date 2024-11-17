@@ -23,6 +23,18 @@
     padding: 2rem;
     text-align: center;
     color: var(--white);
+
+    .header-left {
+      display: block;
+      align-items: left;
+      gap: 1rem;
+    }
+  
+    .header-icon {
+      width: 100px;  
+      height: 100px;  
+      filter: brightness(0) invert(1);  
+    }
   }
 
   h1 {
@@ -34,6 +46,7 @@
 
   nav {
     margin-top: 1rem;
+    text-align: center;
   }
 
   nav a {

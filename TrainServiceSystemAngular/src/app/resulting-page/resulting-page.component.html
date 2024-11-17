@@ -1,5 +1,5 @@
 <div class="resulting-page">
-  <h2>Train Route Details</h2>
+  <h2>Train Route Result</h2>
 
   <div class="train-map">
     <img src = "../../assets/Designed_train_map.jpg" alt="Train Map" />
@@ -9,6 +9,8 @@
 
   <div class="summary-box">
 
+  <h4>Input</h4>
+  <br>
   <div class="input-box">
     <p><strong>From:</strong> {{ from }}</p>
   </div>
@@ -28,7 +30,8 @@
   </div>
 
   <div *ngIf="result.destination_reachable" class="summary-box">
-    <h3>Travel Details:</h3>
+    <h4>Travel Details</h4>
+    <br>
     <table class="solution-table">
       <thead>
         <tr>
@@ -60,13 +63,17 @@
   </div>
 
   <div class="summary-box">
-    <h4>Summary:</h4>
+    <h4>Summary</h4>
     <br>
     <p><strong>Total Steps:</strong> {{ result.total_step }}</p>
     <p><strong>Total Transfer Time:</strong> {{ result.total_transfer_time }}</p>
     <p><strong>Total Money Spent:</strong> {{ result.total_money_spent | currency: 'USD':'symbol':'1.2-2' }}</p>
     <p><strong>Initial Departure Time:</strong> {{ result.initial_departure_time }}</p>
     <p><strong>Final Arrival Time:</strong> {{ result.final_arrival_time }}</p>
+  </div>
+
+  <div class="button-container">
+    <button class="home-button" (click)="navigateToHome()">Back to Route Search</button>
   </div>
 
   <div *ngIf="!result.destination_reachable" class="summary-box">

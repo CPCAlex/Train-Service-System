@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 
@@ -11,11 +12,18 @@ import * as d3 from 'd3';
   styleUrls: ['./resulting-page.component.scss'],
 })
 export class ResultingPageComponent implements OnInit {
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
   from: string = '';
   to: string = '';
   criteria: string = '';
   departureTime: string = '';
   result: any = {};
+
+  navigateToHome() {
+    this.router.navigate(['/']); 
+  }
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef;
 
@@ -248,8 +256,6 @@ export class ResultingPageComponent implements OnInit {
 
   ];
 
-  constructor(private route: ActivatedRoute) {}
-
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.from = params['from'];
@@ -315,9 +321,9 @@ export class ResultingPageComponent implements OnInit {
         } else if (d.id.startsWith('O')) {
           return 'orange';  
         } else if (d.id.startsWith('G')) {
-          return 'green'; 
+          return 'lightgreen'; 
         } else {
-          return 'blue';  
+          return 'black';  
         }
       })
       .attr('fill-opacity', 1)      
@@ -332,7 +338,13 @@ export class ResultingPageComponent implements OnInit {
       .attr('y', (d: any) => d.y)  
       .text((d: any) => d.name)    
       .attr('font-size', '30px')   
-      .attr('fill', 'black')     
+      .attr('fill', (d: any) => {
+        if (d.id.startsWith('B')) {
+          return 'white'
+        } else {
+          return 'black'
+        }
+      })     
       .attr('text-anchor', 'middle') 
       .attr('alignment-baseline', 'middle'); 
   
@@ -381,47 +393,45 @@ export class ResultingPageComponent implements OnInit {
     const expandedRoute = this.expandRoutePath(routeData);
 
     
-    const train = this.svg.append('circle')
+    const train = this.svg.append('image')
       .attr('class', 'train')
-      .attr('r', 15)
-      .attr('fill', 'red')
-      .attr('stroke', 'white')
-      .attr('stroke-width', 2);
+      .attr('xlink:href', '../../assets/train3.png')  
+      .attr('width', 100)  
+      .attr('height', 100)  
+      .attr('x', 0)  
+      .attr('y', 0);  
 
     
     const firstStation = this.stations.find(st => st.id === expandedRoute[0][1]);
     if (!firstStation) return;
 
-    train.attr('cx', firstStation.x)
-        .attr('cy', firstStation.y);
+    train.attr('x', firstStation.x - 50)
+        .attr('y', firstStation.y - 50);
 
     let currentTransition = train;
     let delay = 0;
     const movementDuration = 1000; 
-    const stationStopDuration = 500; 
+    let stationStopDuration = 500; 
 
     expandedRoute.forEach((step, index) => {
       const fromStation = this.stations.find(st => st.id === step[1]);
       const toStation = this.stations.find(st => st.id === step[2]);
 
       if (fromStation && toStation) {
-        
+
         currentTransition = currentTransition
           .transition()
           .delay(delay)
-          .duration(stationStopDuration)
-          .attr('r', 20) 
-          .attr('fill', 'yellow');
-
+          .duration(stationStopDuration);
+        
         delay += stationStopDuration;
 
         
         currentTransition = currentTransition
           .transition()
           .duration(movementDuration)
-          .attr('cx', toStation.x)
-          .attr('cy', toStation.y)
-          .attr('r', 15); 
+          .attr('x', toStation.x  - 50)
+          .attr('y', toStation.y  - 50); 
 
         delay += movementDuration;
 
@@ -429,12 +439,9 @@ export class ResultingPageComponent implements OnInit {
         if (step[3] === null && step[4] === null) {
           currentTransition = currentTransition
             .transition()
-            .duration(1000) 
-            .attr('fill', 'yellow')
-            .attr('r', 22) 
+            .duration(1000)
             .transition()
-            .duration(500)
-            .attr('r', 15);
+            .duration(500);
 
           delay += 1500;
         }
