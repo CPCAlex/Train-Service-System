@@ -410,8 +410,8 @@ export class ResultingPageComponent implements OnInit {
 
     let currentTransition = train;
     let delay = 0;
-    const movementDuration = 1000; 
-    let stationStopDuration = 500; 
+    const movementDuration = 100; 
+    let stationStopDuration = 50; 
 
     expandedRoute.forEach((step, index) => {
       const fromStation = this.stations.find(st => st.id === step[1]);
@@ -439,11 +439,11 @@ export class ResultingPageComponent implements OnInit {
         if (step[3] === null && step[4] === null) {
           currentTransition = currentTransition
             .transition()
-            .duration(1000)
+            .duration(100)
             .transition()
-            .duration(500);
+            .duration(50);
 
-          delay += 1500;
+          delay += 150;
         }
       }
     });
