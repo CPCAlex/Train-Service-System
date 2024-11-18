@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,12 +12,17 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./timetable-page.component.scss'],
 })
 export class TimetablePageComponent implements OnInit {
+
+  navigateToHome() {
+    this.router.navigate(['/']); 
+  }
+
   trainLines: string[] = ['Black_Line', 'Green_Line', 'Orange_Line', 'Red_Line'];
   selectedTrainLine: string = '';
   selectedDirection: 'Inbound' | 'Outbound' = 'Inbound';
   timeTable: any[] = []; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     
